@@ -1,0 +1,51 @@
+body {
+    background-color: black;
+    color: yellow;
+    font-size: 40px;
+    /*font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    font-family: 'Arial Narrow', Arial, sans-serif;*/
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin: 5px;
+    font-size: 50px;
+    color: yellow;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    background: -webkit-linear-gradient(rgb(221, 223, 180), yellow);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.flex div {
+    text-align: center;
+    padding: 0px 5px;
+    margin: 0px 10px;
+}
+
+.flex input[type="button"] {
+    font-size: 20px;
+    position: relative;
+    vertical-align: middle;
+    border: solid 2px gray;
+}
+
+.selectedNavButton {
+    border: solid rgb(100, 100, 3) 4px !important;
+    background-color: #2f2116 !important;
+}
+
+hr {
+    margin: 5px;
+    margin-bottom: 15px;
+    border: 2px solid rgb(115, 125, 9);
+}

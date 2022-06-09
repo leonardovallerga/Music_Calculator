@@ -1,0 +1,114 @@
+.screens {
+    width: 60%;
+    margin: auto;
+    background-color: #15130e;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+}
+
+.grid span {
+    padding: 0px 5px;
+}
+
+.double-column {
+    grid-column: span 2;
+}
+.triple-column {
+    grid-column: span 3;
+}
+.quadruple-column {
+    grid-column: span 4;
+}
+
+.input {
+    color: rgb(220, 220, 23);
+    border: solid;
+}
+
+.screenTap .input * {
+    text-align: center;
+    margin: 10px 0px;
+}
+
+.output {
+    color: rgb(38, 227, 17);
+    border: solid;
+    text-align: center;
+}
+
+.result {
+    color: rgb(0, 255, 0);
+    border: solid 4px rgba(86, 243, 34, 0.682);
+    border-style: double;
+    background-color: #1d3f1b;
+}
+
+.small {
+    font-size: 30px;
+}
+
+.screens select, input[type="number"], input[type="button"] {
+    font-size: 30px;
+    color: yellow;
+    background: black;
+}
+
+.screens input[type="button"] {
+    border-radius: 15px;
+    border-color: yellowgreen;
+    background-color: #61720a87;
+    font-size: 20px;
+}
+
+.screens select {
+    width: 100px;
+}
+
+input[type="number"] {
+    width: 150px;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+    opacity: 1;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    vertical-align: middle;
+}
+input[type="range"] {
+    -webkit-appearance: none;
+    margin-right: 15px;
+    width: 100px;
+    height: 7px;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    background-image: linear-gradient(#8a9e0a, #779a04);
+    background-repeat: no-repeat;
+  }
+
+.screen-tap {
+    width: 550px;
+    height: 450px;
+}
+
+#tapButton {
+    block-size: 60px;
+    width: 120px;
+    font-size: 40px;
+}
+
+@media (min-width: 700px) {
+    .screens {
+        width: 590px;
+    }
+}
+
+@media (max-width: 700px) {
+    .screens {
+        width:fit-content;
+    }
+}

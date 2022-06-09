@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Music Calculator</title>
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/screens.css">
+  </head>
+  <body>
+    <header>
+      <h1>Music Calculator</h1>
+      <nav class="flex">
+        <div>
+          <input type="button" value="Note to Hertz" class="selectedNavButton" id="btnScreenHertz">
+        </div>
+        <div>
+          <input type="button" value="Hertz to Note" id="btnScreenNote">
+        </div>
+        <div>
+          <input type="button" value="Value to MS" id="btnScreenMs">
+        </div>
+        <div>
+          <input type="button" value="Tap Tempo" id="btnScreenTap">
+        </div>
+      </nav>
+    </header>
+    <hr>
+
+<!--////////////////////////////////////////////////////////////
+ HERTZ -->
+    <div class="screens screenHertz" id="screenHertz">
+      <div class="output grid">
+        <span>Hertz: </span>
+        <span class="result triple-column" id="resultHertz"></span>
+        <span class="small">Midi Note: </span>
+        <span class="result triple-column small" id="resultMidi"></span>
+      </div>
+
+      <div class="input grid">
+        <span>Note:</span>
+        <span>
+          <select name="" id="selectedNote">
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="A" selected>A</option>
+            <option value="B">B</option>
+          </select>
+        </span>
+        <span class="double-column">
+          <select class="" name="" id="selectedAccidental">
+            <option value="" selected>-</option>
+            <option value="#">#</option>
+            <option value="b">b</option>
+            <option value="x">x</option>
+            <option value="h">h</option>
+          </select>
+        </span>
+        <span>Octave:</span>
+        <span class="triple-column">
+          <select class="" name="" id="selectedOctave">
+            <option value="-1">-1</option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </span>
+        <span>Tuning:</span>
+        <span><input type="range" value="440" min="400" max="480" id="selectedTuning"></span>
+        <span id="resultTuning">440</span>
+        <span><input type="button" value="reset" id="resetTuning"></span>
+        <span>Decimals:</span>
+        <span><input type="range" value="2" min="0" max="10" id="selectedDecimalsHertz"></span>
+        <span id="resultDecimalsHertz">2</span>
+      </div>
+    </div>
+
+<!--////////////////////////////////////////////////////////////
+ NOTE -->
+    <div class="screens screenNote" id="screenNote" hidden>
+      <div class="output grid">
+        <span class="small">note:</span>
+        <span class="double-column small">cents:</span>
+        <span class="small">octave:</span>
+        <span class="result" id="resultNote0"></span>
+        <span class="result double-column" id="resultNote1"></span>
+        <span class="result" id="resultNote2"></span>
+      </div>
+      <div class="input grid">
+        <span>Hertz:</span>
+        <span class="triple-column"><input type="number" name="" id="selectedHertz" value="440"></span>
+        <span>Tuning:</span>
+        <span><input type="range" value="440" min="400" max="480" id="selectedTuningNote"></span>
+        <span id="resultTuningNote">440</span>
+        <span><input type="button" value="reset" id="resetTuningNote"></span>
+        <span>Decimals:</span>
+        <span><input type="range" value="2" min="0" max="10" id="selectedDecimalsNote"></span>
+        <span id="resultDecimalsNote">2</span>
+      </div>
+    </div>
+
+<!--////////////////////////////////////////////////////////////
+ MILISECONDS -->
+    <div class="screens screenMs" id="screenMs" hidden>
+      <div class="output grid">
+        <span class="result triple-column" id="resultMs"></span>
+        <span>ms.</span>
+      </div>
+      <div class="input grid">
+        <span>Note Value:</span>
+        <span class="triple-column">
+          <select name="" id="selectedNoteValue">
+            <option value="1">1</option>
+            <option value="2">1/2</option>
+            <option value="4" selected>1/4</option>
+            <option value="8">1/8</option>
+            <option value="16">1/16</option>
+            <option value="32">1/32</option>
+            <option value="64">1/64</option>
+            <option value="128">1/128</option>
+          </select>
+        </span>
+        <span>Modifier:</span>
+        <span class="triple-column">
+          <select name="" id="selectedModifier">
+            <option value="" selected>-</option>
+            <option value=".">.</option>
+            <option value="..">..</option>
+            <option value="...">...</option>
+            <option value="3">triplet</option>
+            <option value="5">quintuplet</option>
+            <option value="7">septuplet</option>
+          </select>
+        </span>
+        <span>Tempo:</span>
+        <span class="triple-column"><input type="number" value="120" id="selectedTempo"></span>
+        <span>Decimals:</span>
+        <span><input type="range" value="2" min="0" max="10" id="selectedDecimalsMs"></span>
+        <span id="resultDecimalsMs">2</span>
+      </div>
+    </div>
+
+<!--////////////////////////////////////////////////////////////
+ TAP -->
+    <div class="screens screenTap" id="screenTap" hidden>
+      <div class="output grid">
+        <span>Tempo:</span>
+        <span class="result double-column" id="textTempo">0</span>
+        <span>bpm.</span>
+      </div>
+      <div class="input grid">
+        <span class="quadruple-column"><input type="button"  value="TAP" id="tapButton"></span>
+        <span class="quadruple-column"><input type="button"  value="reset" id="resetTap"></span>
+      </div>
+    </div>
+
+<!--////////////////////////////////////////////////////////////-->
+
+    <script src="./scripts/music-functions.js" charset="utf-8"></script>
+    <script src="./scripts/nav.js" charset="utf-8"></script>
+    <script src="./scripts/screen-hertz-to-note.js" charset="utf-8"></script>
+    <script src="./scripts/screen-note-to-hertz.js" charset="utf-8"></script>
+    <script src="./scripts/screen-noteValue-to-miliseconds.js" charset="utf-8"></script>
+    <script src="./scripts/screen-tap.js" charset="utf-8"></script>
+  </body>
+</html>
+
+    <!--<div class="screens screen-note-to-hertz">
+      <form class="">
+        <table>
+          <tr>
+            <td>Note:</td>
+            <td>
+              <select class="" name="">
+                <option value="">C</option>
+                <option value="">D</option>
+                <option value="">E</option>
+                <option value="">F</option>
+                <option value="">G</option>
+                <option value="" selected>A</option>
+                <option value="">B</option>
+              </select>
+            </td>
+            <td>
+              <select class="" name="">
+                <option value="" selected>-</option>
+                <option value="">#</option>
+                <option value="">b</option>
+                <option value="">x</option>
+                <option value="">h</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Octave:</td>
+            <td colspan="2">
+              <select class="" name="">
+                <option value="">-1</option>
+                <option value="">0</option>
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+                <option value="" selected>4</option>
+                <option value="">5</option>
+                <option value="">6</option>
+                <option value="">7</option>
+                <option value="">8</option>
+                <option value="">9</option>
+                <option value="">10</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>Tuning:</td>
+            <td><input type="range" value="50"></td>
+            <td><span>440</span></td>
+          </tr>
+          <tr><td colspan="3"><br></td></tr>
+          <tr>
+            <td>Hertz:</td>
+            <td colspan="2"><span></span></td>
+          </tr>
+          <tr>
+            <td>Midi Note:</td>
+            <td colspan="2"><span></span></td>
+          </tr>
+        </table>
+      </form>
+    </div>-->
